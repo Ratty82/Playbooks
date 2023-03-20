@@ -1,11 +1,6 @@
-- name: copy file from local host to remote host (relative path, ./files/)
-  copy:
-    src: /home/eugene/build/build-{{ semaphore_vars.task_details.incoming_version }}/build-v{{ semaphore_vars.task_details.incoming_version }}.tar.gz
-    dest: "{{ dest_path }}"
-
-- name: extract files
+- name: Download and extract files
   unarchive:
-    src: /home/eugene/mount/build-v{{ semaphore_vars.task_details.incoming_version }}.tar.gz
+    src: /home/eugene/build/build-{{ semaphore_vars.task_details.incoming_version }}/build-v{{ semaphore_vars.task_details.incoming_version }}.tar.gz
     dest: "{{ dest_path }}"
     remote_src: True
 
