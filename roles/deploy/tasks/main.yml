@@ -10,13 +10,7 @@
       ansible.builtin.package:
         name: cifs-utils
         state: present
-- name: check mountpoint exist
-      ansible.builtin.file:
-        path: "{{ mountpoint }}"
-        state: directory
-        mode: '0777'
-        owner: eugene
-        group: eugene
+
 - name: Mount network share
       ansible.posix.mount:
         src: "{{ uri }}"
