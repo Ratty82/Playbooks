@@ -1,5 +1,7 @@
 ---
 - name: mount SMB
+  hosts: server
+  become: true
   vars:
     uri: "//NIFI-MSK/LocalApp"
     username: "broadview@NIFI-MSK"
