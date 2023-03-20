@@ -1,3 +1,17 @@
+- name: Check curlftpfs package
+  apt: name=curlftpfs state=present
+  become: true
+
+- name: Create mount point
+  file: path="/home/eugene/mount" state=directory
+
+- name: Construct connection string
+  set_fact: ftp_conn="ftp@172.20.4.124/localapp"
+  when: ftp_conn is not defined
+
+- name: Mount FTP
+  command: curlftpfs user="" "{{ ftp_conn }}" "/home/eugene/mount"
+
 - name: Download and extract files
   unarchive:
     src: /home/eugene/build-{{semaphore_vars.task_details.incoming_version}}.tar.gz
