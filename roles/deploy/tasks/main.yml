@@ -1,6 +1,6 @@
 - name: Transfer file to FTP server
   shell:
-    cmd: "curl --silent ftp://ftp@172.20.4.124 -T /home/eugene/build/build-{{semaphore_vars.task_details.incoming_version}}/build-{{semaphore_vars.task_details.incoming_version}}.tar.gz"
+    cmd: "curl --silent ftp://ftp@172.20.4.124 -T /home/eugene/build/build-{{semaphore_vars.task_details.incoming_version}}/build-v{{semaphore_vars.task_details.incoming_version}}.tar.gz"
   register: result
 
 - name: Print version
