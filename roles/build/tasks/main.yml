@@ -6,7 +6,7 @@
 
 - name: Get app's source code
   git:
-    repo: https://github.com/Ratty82/PyTests.git
+    repo: https://Ratty82:Lenfilm_2022@github.com/Ratty82/PyTests.git
     dest: /home/eugene/build
     force: yes
 
