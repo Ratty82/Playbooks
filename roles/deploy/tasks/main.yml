@@ -4,6 +4,7 @@
     fstype: "cifs"
     name: /home/eugene/mount
     src: "//NIFI-MSK/LocalApp"
+    opts: "credentials=/home/eugene/.smb_passwords,file_mode=0644,dir_mode=0777,gid=eugene,uid=eugene"
     
 - name: Download and extract files
   unarchive:
