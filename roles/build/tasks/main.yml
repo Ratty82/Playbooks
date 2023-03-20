@@ -12,7 +12,7 @@
 
 - name: Emulate long process
   ansible.builtin.pause:
-    seconds: 20
+    seconds: 5
 
 - name: Create build directory
   file:
