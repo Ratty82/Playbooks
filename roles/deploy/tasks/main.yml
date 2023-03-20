@@ -12,7 +12,7 @@
         state: present
 
 - name: Mount network share
-      ansible.posix.mount:
+  ansible.posix.mount:
         src: "{{ uri }}"
         path: "{{ mountpoint }}"
         fstype: cifs
