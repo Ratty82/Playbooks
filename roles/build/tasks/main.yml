@@ -10,28 +10,9 @@
     dest: /home/eugene/build
     force: yes
 
-
-- name: Print Test Var value
-  debug:
-    msg: "{{ test_var|default('Undefined') }}"
-
-
-- name: Build app
-  lineinfile:
-    path: /home/eugene/build/ActiveMQ_Receive.py 
-    search_string: "{{ item.tpl }}"
-    line: "{{ item.value }}"
-  with_items:
-  - tpl: "<!-- test_var -->"
-    value: "{{ test_var|default('') }}"
-  - tpl: "<!-- version -->"
-    value: "{{ semaphore_vars.task_details.target_version }}"
-
-
 - name: Emulate long process
   ansible.builtin.pause:
     seconds: 20
-
 
 - name: Create build directory
   file:
