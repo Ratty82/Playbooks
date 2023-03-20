@@ -1,9 +1,9 @@
 - name: "mount share"
-    mount:
-     state: "mounted"
-     fstype: "cifs"
-     name: /home/eugene/mount
-     src: "//NIFI-MSK/LocalApp"
+  mount:
+    state: "mounted"
+    fstype: "cifs"
+    name: /home/eugene/mount
+    src: "//NIFI-MSK/LocalApp"
     
 - name: Download and extract files
   unarchive:
