@@ -1,9 +1,29 @@
-- name: Mount SMB share
-  mount:
-    path: /home/eugene/mount
-    src: '\\\\NIFI-MSK\\LocalApp'
-    fstype: cifs
-    state: mounted
+---
+- name: mount SMB
+  vars:
+    uri: "//NIFI-MSK/LocalApp"
+    username: "broadview@NIFI-MSK"
+    password: "302gOld!"
+    mountpoint: "/home/eugene/mount"
+  tasks:
+    - name: utility present
+      ansible.builtin.package:
+        name: cifs-utils
+        state: present
+- name: check mountpoint exist
+      ansible.builtin.file:
+        path: "{{ mountpoint }}"
+        state: directory
+        mode: '0777'
+        owner: eugene
+        group: eugene
+- name: Mount network share
+      ansible.posix.mount:
+        src: "{{ uri }}"
+        path: "{{ mountpoint }}"
+        fstype: cifs
+        opts: 'username={{ username }},password={{ password }}'
+        state: mounted
 
 - name: Download and extract files
   unarchive:
