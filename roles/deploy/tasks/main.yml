@@ -2,7 +2,7 @@
   win_copy:
     src: /home/eugene/build/build-{{semaphore_vars.task_details.incoming_version}}/build-v{{semaphore_vars.task_details.incoming_version}}.tar.gz
     dest: \\NIFI-MSK\LocalApp\
-    remote_src: True
+    remote_src: False
   become: True
   become_method: runas
   become_flags: logon_type=new_credentials logon_flags=netcredentials_only
