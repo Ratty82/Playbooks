@@ -5,7 +5,7 @@
 
 - name: extract files
   unarchive:
-    src: "{{ dest_path }}"/build-v{{ semaphore_vars.task_details.incoming_version }}.tar.gz
+    src: /home/eugene/mount/build-v{{ semaphore_vars.task_details.incoming_version }}.tar.gz
     dest: "{{ dest_path }}"
     remote_src: True
 
