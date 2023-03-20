@@ -1,0 +1,47 @@
+- name: Remove previous version
+  file:
+    path: /home/eugene/build
+    state: absent
+
+
+- name: Get app's source code
+  git:
+    repo: https://github.com/Ratty82/PyTests.git
+    dest: /home/eugene/build
+    force: yes
+
+
+- name: Print Test Var value
+  debug:
+    msg: "{{ test_var|default('Undefined') }}"
+
+
+- name: Build app
+  lineinfile:
+    path: /home/eugene/build/ActiveMQ_Receive.py 
+    search_string: "{{ item.tpl }}"
+    line: "{{ item.value }}"
+  with_items:
+  - tpl: "<!-- test_var -->"
+    value: "{{ test_var|default('') }}"
+  - tpl: "<!-- version -->"
+    value: "{{ semaphore_vars.task_details.target_version }}"
+
+
+- name: Emulate long process
+  ansible.builtin.pause:
+    seconds: 20
+
+
+- name: Create build directory
+  file:
+    path: /home/eugene/build/build-{{ semaphore_vars.task_details.target_version }}
+    state: directory
+
+
+- name: Create build archive
+  archive:
+    path: /home/eugene/build/*
+    dest: /home/eugene/build/build-{{ semaphore_vars.task_details.target_version }}/build-v{{ semaphore_vars.task_details.target_version }}.tar.gz
+
+  # no_log: True
