@@ -1,9 +1,3 @@
-- name: Remove previous version
-  file:
-    path: /home/eugene/build
-    state: absent
-
-
 - name: Get app's source code
   git:
     repo: https://github.com/Ratty82/PyTests.git
