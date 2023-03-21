@@ -10,13 +10,13 @@
 
 - name: Create build directory
   file:
-    path: /home/eugene/build/build-{{ semaphore_vars.task_details.target_version }}
+    path: /home/eugene/build_repository/build-{{ semaphore_vars.task_details.target_version }}
     state: directory
 
 
 - name: Create build archive
   archive:
     path: /home/eugene/build/*
-    dest: /home/eugene/build/build-{{ semaphore_vars.task_details.target_version }}/build-v{{ semaphore_vars.task_details.target_version }}.tar.gz
+    dest: /home/eugene/build_repository/build-{{ semaphore_vars.task_details.target_version }}/build-v{{ semaphore_vars.task_details.target_version }}.tar.gz
 
   # no_log: True
