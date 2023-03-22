@@ -1,0 +1,5 @@
+- name: Set service startup mode to auto and ensure it is started
+  ansible.windows.win_service:
+    name: nifi
+    start_mode: auto
+    state: started
