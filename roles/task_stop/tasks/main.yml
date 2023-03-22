@@ -3,3 +3,5 @@
     name: nifi
     start_mode: auto
     state: started
+    username: BROADVIEWSOFTWARE\broadview
+    password: 302gOld!
